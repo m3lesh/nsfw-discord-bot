@@ -71,4 +71,4 @@ sudo docker exec -it <container id or container name> sh
 
 ## Authors
 
-- [@octokatherine](https://github.com/m3lesh)
+- [@m3lesh](https://github.com/m3lesh)
