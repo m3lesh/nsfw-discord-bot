@@ -3,6 +3,9 @@
 
 Discord bot nsfw using pornhub api 
 
+## Screenshots
+
+![App Screenshot](https://i.imgur.com/FjFi8wK.png)
 
 ## docker setup
 
