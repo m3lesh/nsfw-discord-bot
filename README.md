@@ -1,7 +1,7 @@
 
-# Project Title
+# About
 
-A brief description of what this project does and who it's for
+Discord bot nsfw using pornhub api 
 
 
 ## docker setup

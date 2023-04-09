@@ -2,7 +2,14 @@ require("dotenv").config();
 
 const fs = require("node:fs");
 const path = require("node:path");
-const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
+const {
+  Client,
+  Collection,
+  Events,
+  GatewayIntentBits,
+  REST,
+  Routes,
+} = require("discord.js");
 
 const client = new Client({
   intents: [
@@ -12,28 +19,66 @@ const client = new Client({
   ],
   presence: {
     status: "online",
-    // online
-    // idle
-    // invisible
-    // dnd (do not disturb)
-
     activities: [
       {
         name: "معلــــــيش",
         type: 1,
-        // 0	Game
-        // 1	Streaming
-        // 2	Listening
-        // 3	Watching
         url: "https://www.youtube.com/watch?v=b9EkwUwivDY",
       },
     ],
   },
 });
 
-client.commands = new Collection();
+const commands = [];
+// Grab all the command folders from the commands directory you created earlier
 const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
+
+for (const folder of commandFolders) {
+  // Grab all the command files from the commands directory you created earlier
+  const commandsPath = path.join(foldersPath, folder);
+  const commandFiles = fs
+    .readdirSync(commandsPath)
+    .filter((file) => file.endsWith(".js"));
+  // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
+  for (const file of commandFiles) {
+    const filePath = path.join(commandsPath, file);
+    const command = require(filePath);
+    commands.push(command.data.toJSON());
+  }
+}
+
+// Construct and prepare an instance of the REST module
+const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
+
+// and deploy your commands!
+(async () => {
+  try {
+    console.log(
+      `Started refreshing ${commands.length} application (/) commands.`
+    );
+
+    // The put method is used to fully refresh all commands in the guild with the current set
+    const data = await rest.put(
+      Routes.applicationGuildCommands(
+        process.env.CLIENTID,
+        process.env.GUILDID
+      ),
+      { body: commands }
+    );
+
+    console.log(
+      `Successfully reloaded ${data.length} application (/) commands.`
+    );
+  } catch (error) {
+    // And of course, make sure you catch and log any errors!
+    console.error(error);
+  }
+})();
+
+client.commands = new Collection();
+// const foldersPath = path.join(__dirname, "commands");
+// const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
   const commandsPath = path.join(foldersPath, folder);
