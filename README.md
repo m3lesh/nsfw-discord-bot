@@ -1,26 +1,67 @@
-# nsfw-discord-bot
 
-## docker command
- 
+# Project Title
+
+A brief description of what this project does and who it's for
+
+
+## docker setup
+
 build image
 
-docker build -t nsfw-discord-bot . 
+```bash
+  sudo docker build -t nsfw-discord-bot .
+```
 
 build container
 
-docker run -d --name nsfw-bot-1 -e TOKEN= -e channel_id= -e rollid= nsfw-discord-bot
+```bash
+  docker run -d --name nsfw-bot-1 -e TOKEN=<TOKEN> -e channel_id=<channel id> -e roleid=<role id> nsfw-discord-bot
+```
 
 
+## docker command
 
-docker ps -a
+### docker images
 
-docker rm <container id || container name>
+show all images
 
-docker images 
+```bash
+sudo docker images
+```
 
-docker image rm <image id || image name>
+remove images
 
-docker container stop <id || name>
-docker container start <id || name>
 
-docker exec -it <container id || container name> sh
+```bash
+sudo docker image rm <image id or image name>
+```
+
+### docker containers
+
+show all containers
+
+```bash
+sudo docker ps -a
+```
+
+remove container
+
+```bash
+sudo docker rm <container id or container name>
+```
+
+start container
+
+```bash
+sudo docker container start <id or name>
+```
+stop container
+
+```bash
+sudo docker container stop <id or name>
+```
+edit container
+
+```bash
+sudo docker exec -it <container id or container name> sh
+```
