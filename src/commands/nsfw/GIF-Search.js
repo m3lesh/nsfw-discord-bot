@@ -47,7 +47,7 @@ module.exports = {
 
     const mp4 = [];
 
-    if (interaction.member.roles.cache.has(process.env.rollid)) {
+    if (interaction.member.roles.cache.has(process.env.roleid)) {
       for (let i = 0; i < res.data.length; i++) {
         if (gif_number === i) {
           break;

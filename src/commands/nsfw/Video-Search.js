@@ -66,7 +66,7 @@ module.exports = {
       );
     }
 
-    if (interaction.member.roles.cache.has(process.env.rollid)) {
+    if (interaction.member.roles.cache.has(process.env.roleid)) {
       return interaction.reply({ embeds ,ephemeral: true,});
     } else {
       return interaction.reply("m3lesh");
