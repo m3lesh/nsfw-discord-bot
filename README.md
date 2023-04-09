@@ -1,14 +1,15 @@
-# nsfw-discord-bot
+## nsfw-discord-bot
 
-
+# docker command
+ 
 build image
-{
+
 docker build -t nsfw-discord-bot . 
-}
+
 build container
-{
+
 docker run -d --name nsfw-bot-1 -e TOKEN= -e channel_id= -e rollid= nsfw-discord-bot
-}
+
 
 
 docker ps -a
