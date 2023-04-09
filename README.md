@@ -1,6 +1,6 @@
-## nsfw-discord-bot
+# nsfw-discord-bot
 
-# docker command
+## docker command
  
 build image
 
