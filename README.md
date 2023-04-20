@@ -68,6 +68,12 @@ edit container
 ```bash
 sudo docker exec -it <container id or container name> sh
 ```
+logs container
+
+
+```bash
+sudo docker logs -f  <container id or container name> sh
+```
 
 ## Authors
 
