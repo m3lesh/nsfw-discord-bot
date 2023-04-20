@@ -72,7 +72,7 @@ logs container
 
 
 ```bash
-sudo docker logs -f  <container id or container name> sh
+sudo docker logs -f  <container id or container name>
 ```
 
 ## Authors
