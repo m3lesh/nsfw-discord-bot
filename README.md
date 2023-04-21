@@ -18,7 +18,7 @@ build image
 build container
 
 ```bash
-  sudo docker run -d --name nsfw-bot-1 -e CLIENTID= -e GUILDID= -e TOKEN= -e channel_id= -e roleid= nsfw-discord-bot
+  sudo docker run -d --name nsfw-bot-1 -e CLIENTID=<> -e GUILDID=<> -e TOKEN=<> -e channel_id=<> -e roleid=<> nsfw-discord-bot
 ```
 
 
