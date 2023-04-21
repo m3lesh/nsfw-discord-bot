@@ -1,3 +1,11 @@
 node_modules/
 
-/run-commnd.txt
+.vscode
+
+.dockerignore
+
+Dockerfile
+
+README.md
+
+run-commnd.txt
