@@ -1,7 +1,7 @@
 ![Logo](https://i.imgur.com/TfrLA1z.png)
 # About
 
-Discord bot nsfw using pornhub api and https://nekobot.xyz/
+Discord bot nsfw using pornhub api and nekobot.xyz
 
 ## Screenshots
 
