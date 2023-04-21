@@ -34,7 +34,8 @@ module.exports = {
       option
         .setName("mode")
         .setDescription(
-          "1=4k\n2=ass\n3=boobs\n4=pussy\n5=anal\n6=blowjob\n7=Amateur\n8=gif\n9=فخاد\n10=feet\n11=hentai anal\n12=hentai"
+  "feet",
+          "1=4k 2=ass 3=boobs 4=pussy 5=anal 6=blowjob 7=Amateur 8=gif 9=thigh 10= 11=hentai anal 12=hentai"
         )
         .setRequired(true)
     )
