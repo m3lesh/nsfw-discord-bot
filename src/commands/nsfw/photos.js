@@ -38,11 +38,14 @@ module.exports = {
         )
         .setRequired(true)
     )
+    .addBooleanOption((option) =>
+      option.setName("private").setDescription("by default private")
+    )
     .setNSFW(true),
 
   async execute(interaction) {
     const mode = interaction.options.getInteger("mode") ?? 1;
-
+    const private = interaction.options.getBoolean("private") ?? true;
     if (interaction.member.roles.cache.has(process.env.roleid)) {
       superagent
         .get("https://nekobot.xyz/api/image")
@@ -54,11 +57,15 @@ module.exports = {
           const elem = res.body.message;
           return interaction.reply({
             content: elem,
-            ephemeral: true,
+            ephemeral: private,
           });
         })
         .catch((err) => {
           // err.message, err.response
+          return interaction.reply({
+            content: err.message,
+            ephemeral: Public,
+          });
         });
     } else {
       return interaction.reply("m3lesh");
