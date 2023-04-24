@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 const superagent = require("superagent");
 require("dotenv").config();
-const element = [];
+
 const query_list = [
   "4k",
   "ass",
@@ -36,13 +36,9 @@ module.exports = {
         .setDescription(
           "0=4k 1=ass 2=boobs 3=pussy 4=anal 5=blowjob 6=Amateur 7=gif 8=thigh 9=feet 10=hentai anal 11=hentai"
         )
-        .setRequired(true)
     )
     .addIntegerOption((option) =>
-      option
-        .setName("photos_number")
-        .setDescription("photos numbers")
-        .setRequired(true)
+      option.setName("photos_number").setDescription("photos numbers")
     )
     .addBooleanOption((option) =>
       option.setName("private").setDescription("by default private")
@@ -53,7 +49,7 @@ module.exports = {
     const mode = interaction.options.getInteger("mode") ?? 1;
     const photos_number = interaction.options.getInteger("photos_number") ?? 1;
     const private = interaction.options.getBoolean("private") ?? true;
-
+    const element = [];
     for (let i = 0; i < photos_number; i++) {
       await superagent
         .get("https://nekobot.xyz/api/image")
