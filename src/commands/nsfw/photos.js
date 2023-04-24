@@ -66,6 +66,7 @@ module.exports = {
         })
         .catch((err) => {
           // err.message, err.response
+          element.push(err.message);
         });
     }
 
