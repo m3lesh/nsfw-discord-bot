@@ -38,6 +38,12 @@ module.exports = {
         )
         .setRequired(true)
     )
+    .addIntegerOption((option) =>
+      option
+        .setName("photos_number")
+        .setDescription("photos numbers")
+        .setRequired(true)
+    )
     .addBooleanOption((option) =>
       option.setName("private").setDescription("by default private")
     )
