@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 const superagent = require("superagent");
 require("dotenv").config();
-
+const element = [];
 const query_list = [
   "4k",
   "ass",
@@ -34,8 +34,7 @@ module.exports = {
       option
         .setName("mode")
         .setDescription(
-  "feet",
-          "1=4k 2=ass 3=boobs 4=pussy 5=anal 6=blowjob 7=Amateur 8=gif 9=thigh 10= 11=hentai anal 12=hentai"
+          "0=4k 1=ass 2=boobs 3=pussy 4=anal 5=blowjob 6=Amateur 7=gif 8=thigh 9=feet 10=hentai anal 11=hentai"
         )
         .setRequired(true)
     )
@@ -46,28 +45,29 @@ module.exports = {
 
   async execute(interaction) {
     const mode = interaction.options.getInteger("mode") ?? 1;
+    const photos_number = interaction.options.getInteger("photos_number") ?? 1;
     const private = interaction.options.getBoolean("private") ?? true;
-    if (interaction.member.roles.cache.has(process.env.roleid)) {
-      superagent
+
+    for (let i = 0; i < photos_number; i++) {
+      await superagent
         .get("https://nekobot.xyz/api/image")
         .query({
           type: query_list[mode - 1],
         })
         .then((res) => {
           // res.body, res.headers, res.status
-          const elem = res.body.message;
-          return interaction.reply({
-            content: elem,
-            ephemeral: private,
-          });
+          element.push(res.body.message);
         })
         .catch((err) => {
           // err.message, err.response
-          return interaction.reply({
-            content: err.message,
-            ephemeral: Public,
-          });
         });
+    }
+
+    if (interaction.member.roles.cache.has(process.env.roleid)) {
+      return interaction.reply({
+        content: element.join("\n"),
+        ephemeral: private,
+      });
     } else {
       return interaction.reply("m3lesh");
     }
